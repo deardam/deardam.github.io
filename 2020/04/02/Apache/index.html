@@ -11,7 +11,7 @@
    
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    数据库之坑 |  Hexo
+    Apache |  Hexo
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -38,7 +38,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-JAVA" class="article article-type-post" itemscope
+  <article id="post-Apache" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -46,7 +46,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  数据库之坑
+  Apache
 </h1>
  
 
@@ -55,8 +55,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/02/JAVA/" class="article-date">
-  <time datetime="2020-04-02T08:53:36.000Z" itemprop="datePublished">2020-04-02</time>
+      <a href="/2020/04/02/Apache/" class="article-date">
+  <time datetime="2020-04-02T07:12:20.000Z" itemprop="datePublished">2020-04-02</time>
 </a>
       
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">397字</span>
+            <span class="post-count">164字</span>
         </span>
     </span>
 
@@ -98,43 +98,22 @@
       
 
       
-      <p>数据库相关操作</p>
-<p>纯mysql：<br>查看MySQL的依赖项：dpkg –list|grep mysql</p>
-<p>一般有：<br>mysql-common<br>mysql-server-x. x<br>mysql-cilent<br>php-mysql</p>
-<p>1、删除mysql的数据文件<br>sudo rm /var/lib/mysql/ -R<br>2、删除mqsql的配置文件：<br>sudo rm /etc/mysql/ -R<br>3、自动卸载mysql的程序：<br>方法一：<br>sudo apt-get autoremove mysql* –purge<br>sudo apt-get remove apparmor</p>
-<p>二：<br>dpkg –list|grep mysql</p>
-<p>apt-get autoremove –purge |grep-list-server</p>
-<p>三：</p>
-<p>sudo apt-get remove –purge ‘mysql*’<br>sudo rm -rf /etc/mysql /var/lib/mysql<br>sudo apt-get autoremove<br>sudo apt-get autoclean<br>sudo apt-get install mysql-server</p>
-<p>设置密码：<br>use mysql ；<br>set password for ‘root’@’localhost’ = password(‘123456’);</p>
-<p>刷新数据：<br>flush privileges; </p>
-<p>启动数据库：<br>mysqld<br>server mysql start</p>
-<p>用密码登入数据库：<br>mysql -uroot -p<br>新建一个库：<br>create database ；<br>显示库文件：<br>show database；<br>显示，新建变：<br>show/create table；</p>
-<p>Ubuntu mysql问题：</p>
-<p>有问题找配置文件：</p>
-<p>你仍然看到错误，打开mysql的配置文件<br>vi /etc/mysql/my.cnf<br>OR<br>$ vi /etc/mysql/mysql.conf.d/mysqld.cnf<br>寻找线下，并使用其注释掉#字符：</p>
-<p>bind-address = 127.0.0.1</p>
-<p>Mysql配置文件：</p>
-<p>vim /etc/mysql/mysql.conf.d/mysqld.cnf</p>
-<p>第二种解决方法：</p>
-<p>跳过密码：</p>
-<p>在配置文件的mysqld下添加</p>
-<p>skip-grant-tables</p>
-<p>关闭只读：<br>set global read_only=0;<br>flush privileges;<br>恢复注解：<br>skip-grant-tables</p>
-<p>最后运行 mysql_sexure_installation</p>
-<p>运行时提示 No. .. longin Home<br>解决方法：</p>
-<p>sudo service mysql stop</p>
-<p>sudo usermod -d /var/lib/mysql/ mysql</p>
-<p>sudo service mysql start</p>
-<p>无密码登入解决方法：</p>
-<p>service mysql start<br>mysql<br>use mysql</p>
-<p>进入mysql数据库，修改数据库的内容</p>
-<p>1， use mysql;<br>2，update user set authentication_string=””  where User=’root’;//设 authentication_string 为空值 ，因为是连接这个加密的东西</p>
-<p>先设密码为空</p>
-<p>3，update user set plugin=”mysql_native_password”;</p>
-<p>4，flush privileges;</p>
-<p>5，quit;</p>
-<p>然后重启MySQL。</p>
+      <p>Apache</p>
+<p>启动：<br>apachectl start/stop/status</p>
+<p>重启：<br>systemctl restart apache2</p>
+<p>Apache首先提供PHP页面：<br>/etc/apache2/mods-enabled/dir.conf</p>
+<p>PHP根目录路径：<br>/files/usr/var/www/html</p>
+<p>PHP测试：<br>在根目录下新建 phpinfo. php<br>编辑：<br><?php
+phpinfo();
+?></p>
+<p>apache配置：<br>端口：<br>/etc/httpd/conf/httpd.conf<br>这是旧版本的</p>
+<p>apache2的配置文件：<br>/etc/apache2/apache2.conf<br>duan</p>
+<p>修改端口:<br>/etc/apache2/ports.conf<br>000-default. conf</p>
+<p>添加本地回路服务器：</p>
+<p>vim /etc/apache2/apache2.conf</p>
+<p>最后加入一句：<br>ServerName localhost:</p>
+<p>apache2根目录：<br>DocumentRoot 是这个站点的根目录，这样 Apache2 启动时会扫描 /etc/apache2/sites-enabled 中可用的 website 配置并加载<br>它在apache.conf里<br>PHP APACHE 测试：</p>
+<p>都在这个路径：<br>var/www/html/文件</p>
 
       
       <!-- reward -->
@@ -200,7 +179,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/02/JAVA/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/02/Apache/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -215,6 +194,15 @@
   
   
   <nav class="article-nav">
+    
+      <a href="/2020/04/02/SSH%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            SSH相关操作
+          
+        </div>
+      </a>
     
     
       <a href="/2020/03/30/hello-world/" class="article-nav-link">

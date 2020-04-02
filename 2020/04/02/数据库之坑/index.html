@@ -11,7 +11,7 @@
    
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Hello World |  Hexo
+    数据库之坑 |  Hexo
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -38,7 +38,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-hello-world" class="article article-type-post" itemscope
+  <article id="post-数据库之坑" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -46,7 +46,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Hello World
+  数据库之坑
 </h1>
  
 
@@ -55,8 +55,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/30/hello-world/" class="article-date">
-  <time datetime="2020-03-30T11:59:00.000Z" itemprop="datePublished">2020-03-30</time>
+      <a href="/2020/04/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%9D%91/" class="article-date">
+  <time datetime="2020-04-02T08:53:36.000Z" itemprop="datePublished">2020-04-02</time>
 </a>
       
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">74字</span>
+            <span class="post-count">397字</span>
         </span>
     </span>
 
@@ -86,8 +86,6 @@
 
     
     
-    <div class="tocbot"></div>
-
 
 
 
@@ -100,19 +98,43 @@
       
 
       
-      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a><br>oyment.html)</p>
+      <p>数据库相关操作</p>
+<p>纯mysql：<br>查看MySQL的依赖项：dpkg –list|grep mysql</p>
+<p>一般有：<br>mysql-common<br>mysql-server-x. x<br>mysql-cilent<br>php-mysql</p>
+<p>1、删除mysql的数据文件<br>sudo rm /var/lib/mysql/ -R<br>2、删除mqsql的配置文件：<br>sudo rm /etc/mysql/ -R<br>3、自动卸载mysql的程序：<br>方法一：<br>sudo apt-get autoremove mysql* –purge<br>sudo apt-get remove apparmor</p>
+<p>二：<br>dpkg –list|grep mysql</p>
+<p>apt-get autoremove –purge |grep-list-server</p>
+<p>三：</p>
+<p>sudo apt-get remove –purge ‘mysql*’<br>sudo rm -rf /etc/mysql /var/lib/mysql<br>sudo apt-get autoremove<br>sudo apt-get autoclean<br>sudo apt-get install mysql-server</p>
+<p>设置密码：<br>use mysql ；<br>set password for ‘root’@’localhost’ = password(‘123456’);</p>
+<p>刷新数据：<br>flush privileges; </p>
+<p>启动数据库：<br>mysqld<br>server mysql start</p>
+<p>用密码登入数据库：<br>mysql -uroot -p<br>新建一个库：<br>create database ；<br>显示库文件：<br>show database；<br>显示，新建变：<br>show/create table；</p>
+<p>Ubuntu mysql问题：</p>
+<p>有问题找配置文件：</p>
+<p>你仍然看到错误，打开mysql的配置文件<br>vi /etc/mysql/my.cnf<br>OR<br>$ vi /etc/mysql/mysql.conf.d/mysqld.cnf<br>寻找线下，并使用其注释掉#字符：</p>
+<p>bind-address = 127.0.0.1</p>
+<p>Mysql配置文件：</p>
+<p>vim /etc/mysql/mysql.conf.d/mysqld.cnf</p>
+<p>第二种解决方法：</p>
+<p>跳过密码：</p>
+<p>在配置文件的mysqld下添加</p>
+<p>skip-grant-tables</p>
+<p>关闭只读：<br>set global read_only=0;<br>flush privileges;<br>恢复注解：<br>skip-grant-tables</p>
+<p>最后运行 mysql_sexure_installation</p>
+<p>运行时提示 No. .. longin Home<br>解决方法：</p>
+<p>sudo service mysql stop</p>
+<p>sudo usermod -d /var/lib/mysql/ mysql</p>
+<p>sudo service mysql start</p>
+<p>无密码登入解决方法：</p>
+<p>service mysql start<br>mysql<br>use mysql</p>
+<p>进入mysql数据库，修改数据库的内容</p>
+<p>1， use mysql;<br>2，update user set authentication_string=””  where User=’root’;//设 authentication_string 为空值 ，因为是连接这个加密的东西</p>
+<p>先设密码为空</p>
+<p>3，update user set plugin=”mysql_native_password”;</p>
+<p>4，flush privileges;</p>
+<p>5，quit;</p>
+<p>然后重启MySQL。</p>
 
       
       <!-- reward -->
@@ -178,7 +200,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/30/hello-world/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%9D%91/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -194,15 +216,11 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/04/02/Apache/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Apache
-          
-        </div>
-      </a>
     
+      <a href="/2020/04/02/Git-Github-Ssh-Hexo/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Git/Github/Ssh/Hexo</div>
+      </a>
     
   </nav>
 

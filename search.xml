@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JAVA</title>
-    <url>/2020/03/31/JAVA/</url>
-    <content><![CDATA[<p>Test one</p>
+    <title>数据库之坑</title>
+    <url>/2020/04/02/JAVA/</url>
+    <content><![CDATA[<p>数据库相关操作</p>
+<p>纯mysql：<br>查看MySQL的依赖项：dpkg –list|grep mysql</p>
+<p>一般有：<br>mysql-common<br>mysql-server-x. x<br>mysql-cilent<br>php-mysql</p>
+<p>1、删除mysql的数据文件<br>sudo rm /var/lib/mysql/ -R<br>2、删除mqsql的配置文件：<br>sudo rm /etc/mysql/ -R<br>3、自动卸载mysql的程序：<br>方法一：<br>sudo apt-get autoremove mysql* –purge<br>sudo apt-get remove apparmor</p>
+<p>二：<br>dpkg –list|grep mysql</p>
+<p>apt-get autoremove –purge |grep-list-server</p>
+<p>三：</p>
+<p>sudo apt-get remove –purge ‘mysql*’<br>sudo rm -rf /etc/mysql /var/lib/mysql<br>sudo apt-get autoremove<br>sudo apt-get autoclean<br>sudo apt-get install mysql-server</p>
+<p>设置密码：<br>use mysql ；<br>set password for ‘root’@’localhost’ = password(‘123456’);</p>
+<p>刷新数据：<br>flush privileges; </p>
+<p>启动数据库：<br>mysqld<br>server mysql start</p>
+<p>用密码登入数据库：<br>mysql -uroot -p<br>新建一个库：<br>create database ；<br>显示库文件：<br>show database；<br>显示，新建变：<br>show/create table；</p>
+<p>Ubuntu mysql问题：</p>
+<p>有问题找配置文件：</p>
+<p>你仍然看到错误，打开mysql的配置文件<br>vi /etc/mysql/my.cnf<br>OR<br>$ vi /etc/mysql/mysql.conf.d/mysqld.cnf<br>寻找线下，并使用其注释掉#字符：</p>
+<p>bind-address = 127.0.0.1</p>
+<p>Mysql配置文件：</p>
+<p>vim /etc/mysql/mysql.conf.d/mysqld.cnf</p>
+<p>第二种解决方法：</p>
+<p>跳过密码：</p>
+<p>在配置文件的mysqld下添加</p>
+<p>skip-grant-tables</p>
+<p>关闭只读：<br>set global read_only=0;<br>flush privileges;<br>恢复注解：<br>skip-grant-tables</p>
+<p>最后运行 mysql_sexure_installation</p>
+<p>运行时提示 No. .. longin Home<br>解决方法：</p>
+<p>sudo service mysql stop</p>
+<p>sudo usermod -d /var/lib/mysql/ mysql</p>
+<p>sudo service mysql start</p>
+<p>无密码登入解决方法：</p>
+<p>service mysql start<br>mysql<br>use mysql</p>
+<p>进入mysql数据库，修改数据库的内容</p>
+<p>1， use mysql;<br>2，update user set authentication_string=””  where User=’root’;//设 authentication_string 为空值 ，因为是连接这个加密的东西</p>
+<p>先设密码为空</p>
+<p>3，update user set plugin=”mysql_native_password”;</p>
+<p>4，flush privileges;</p>
+<p>5，quit;</p>
+<p>然后重启MySQL。</p>
 ]]></content>
   </entry>
   <entry>

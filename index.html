@@ -108,53 +108,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>数据库相关操作</p>
-<p>纯mysql：<br>查看MySQL的依赖项：dpkg –list|grep mysql</p>
-<p>一般有：<br>mysql-common<br>mysql-server-x. x<br>mysql-cilent<br>php-mysql</p>
-<p>1、删除mysql的数据文件<br>sudo rm /var/lib/mysql/ -R<br>2、删除mqsql的配置文件：<br>sudo rm /etc/mysql/ -R<br>3、自动卸载mysql的程序：<br>方法一：<br>sudo apt-get autoremove mysql* –purge<br>sudo apt-get remove apparmor</p>
-<p>二：<br>dpkg –list|grep mysql</p>
-<p>apt-get autoremove –purge |grep-list-server</p>
-<p>三：</p>
-<p>sudo apt-get remove –purge ‘mysql*’<br>sudo rm -rf /etc/mysql /var/lib/mysql<br>sudo apt-get autoremove<br>sudo apt-get autoclean<br>sudo apt-get install mysql-server</p>
-<p>设置密码：<br>use mysql ；<br>set password for ‘root’@’localhost’ = password(‘123456’);</p>
-<p>刷新数据：<br>flush privileges; </p>
-<p>启动数据库：<br>mysqld<br>server mysql start</p>
-<p>用密码登入数据库：<br>mysql -uroot -p<br>新建一个库：<br>create database ；<br>显示库文件：<br>show database；<br>显示，新建变：<br>show/create table；</p>
-<p>Ubuntu mysql问题：</p>
-<p>有问题找配置文件：</p>
-<p>你仍然看到错误，打开mysql的配置文件<br>vi /etc/mysql/my.cnf<br>OR<br>$ vi /etc/mysql/mysql.conf.d/mysqld.cnf<br>寻找线下，并使用其注释掉#字符：</p>
-<p>bind-address = 127.0.0.1</p>
-<p>Mysql配置文件：</p>
-<p>vim /etc/mysql/mysql.conf.d/mysqld.cnf</p>
-<p>第二种解决方法：</p>
-<p>跳过密码：</p>
-<p>在配置文件的mysqld下添加</p>
-<p>skip-grant-tables</p>
-<p>关闭只读：<br>set global read_only=0;<br>flush privileges;<br>恢复注解：<br>skip-grant-tables</p>
-<p>最后运行 mysql_sexure_installation</p>
-<p>运行时提示 No. .. longin Home<br>解决方法：</p>
-<p>sudo service mysql stop</p>
-<p>sudo usermod -d /var/lib/mysql/ mysql</p>
-<p>sudo service mysql start</p>
-<p>无密码登入解决方法：</p>
-<p>service mysql start<br>mysql<br>use mysql</p>
-<p>进入mysql数据库，修改数据库的内容</p>
-<p>1， use mysql;<br>2，update user set authentication_string=””  where User=’root’;//设 authentication_string 为空值 ，因为是连接这个加密的东西</p>
-<p>先设密码为空</p>
-<p>3，update user set plugin=”mysql_native_password”;</p>
-<p>4，flush privileges;</p>
-<p>5，quit;</p>
-<p>然后重启MySQL。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
     
     
       <!-- copyright -->
@@ -208,21 +161,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>Git/Github/Ssh/Hexo</p>
-<p>查缺补漏：</p>
-<p><a href="https://segmentfault.com/a/1190000017986794?utm_medium=referral&amp;utm_source=tuicool" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017986794?utm_medium=referral&amp;utm_source=tuicool</a></p>
-<p>本地克隆项目的方法：<br>git clong 项目地址</p>
-<p>LINUX下配置ssh的大致流程：</p>
-
-      
-      <!-- reward -->
-      
-    </div>
     
     
       <!-- copyright -->
@@ -276,48 +214,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>Nginx  PHPfpm</p>
-<p>phpfpm配置文件：<br>termux-chroot<br>vim /etc/php-fpm.d/<a href="http://www.conf" target="_blank" rel="noopener">www.conf</a></p>
-<p>nginx配置文件：</p>
-<p>在proot环境下, 然后编辑配置文件nginx.conf</p>
-<p>vim /etc/nginx/nginx.conf</p>
-<p>nginx 根目录：</p>
-<p>root html; #根目录，相对于安装目录<br>index index.html index.htm; #默认主页</p>
-<p>Nginx 配置文件：</p>
-<p>worker_processes  1;<br>events {<br>    worker_connections  1024;<br>}</p>
-<p>http {<br>    include       mime.types;<br>    default_type  application/octet-stream;<br>    sendfile        on;<br>    keepalive_timeout  65;</p>
-<pre><code>server {
-
-    listen       8080;
-    server_name  localhost;
-    root   /data/data/com.termux/files/usr/share/nginx/html;
-    index  index.html index.htm;
-
-
-    error_page   500 502 503 504  /50x.html;
-    location = /50x.html {
-        root   /data/data/com.termux/files/usr/share/nginx/html;
-    }
-
-
-    location ~ \.php$ {
-        root           html;
-        fastcgi_pass   127.0.0.1:9000;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html$fastcgi_script_name;
-        include        fastcgi_params;
-    }
-}</code></pre><p>}</p>
-
-      
-      <!-- reward -->
-      
-    </div>
     
     
       <!-- copyright -->
@@ -371,35 +267,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>SSH相关操作</p>
-<p>生成ssh密匙：<br>ssh-keygen -t rsa </p>
-<p>ssh数据地址：<br>～/.ssh </p>
-<p>公匙 ：<br>～/.ssh/id_rsa_pub</p>
-<p>私匙：<br>～/.ssh/id_rsa_public</p>
-<p>为GIT生成密匙：<br>Git方：<br>git config –user. name/email<br>相当等于配置一下的连接</p>
-<p>Ssh方：<br>ssh-keygen -t rsa -C ‘git_email’</p>
-<p>注意：先查ssh是否已有rsa. 执行这条命令时，按回车三次密码为空，这里不设置密码，在你上传代码到git的时候，就不需要每次都要输入密码了</p>
-<p>接下来：<br>1复制公匙～/ssd/id_rsa_pub</p>
-<p>2粘贴到 github 官方提供 ssh 密匙设置点</p>
-<p>3建立信任连接:</p>
-<p>ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
-<p>接下来：<br>输入在github的用户名，密码</p>
-<p>常见问题 ：</p>
-<p>连接失败</p>
-<p>解决方法：<br>ssh-agent bash</p>
-<p>ssh-add ～/.ssh/id_rsa</p>
-<p>这时已经生成了新的公匙：</p>
-<p>重新复制粘贴到github的sshkey的设置点即可</p>
-
-      
-      <!-- reward -->
-      
-    </div>
     
     
       <!-- copyright -->
@@ -453,32 +320,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>Apache</p>
-<p>启动：<br>apachectl start/stop/status</p>
-<p>重启：<br>systemctl restart apache2</p>
-<p>Apache首先提供PHP页面：<br>/etc/apache2/mods-enabled/dir.conf</p>
-<p>PHP根目录路径：<br>/files/usr/var/www/html</p>
-<p>PHP测试：<br>在根目录下新建 phpinfo. php<br>编辑：<br><?php
-phpinfo();
-?></p>
-<p>apache配置：<br>端口：<br>/etc/httpd/conf/httpd.conf<br>这是旧版本的</p>
-<p>apache2的配置文件：<br>/etc/apache2/apache2.conf<br>duan</p>
-<p>修改端口:<br>/etc/apache2/ports.conf<br>000-default. conf</p>
-<p>添加本地回路服务器：</p>
-<p>vim /etc/apache2/apache2.conf</p>
-<p>最后加入一句：<br>ServerName localhost:</p>
-<p>apache2根目录：<br>DocumentRoot 是这个站点的根目录，这样 Apache2 启动时会扫描 /etc/apache2/sites-enabled 中可用的 website 配置并加载<br>它在apache.conf里<br>PHP APACHE 测试：</p>
-<p>都在这个路径：<br>var/www/html/文件</p>
-
-      
-      <!-- reward -->
-      
-    </div>
     
     
       <!-- copyright -->
@@ -532,29 +373,6 @@ phpinfo();
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a><br>oyment.html)</p>
-
-      
-      <!-- reward -->
-      
-    </div>
     
     
       <!-- copyright -->
